@@ -23,12 +23,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
-        id: heroku
-        uses: lucassarcanjo/heroku-deploy@2.1.17  # use the latest version of the action
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
-          dockerfile_path: '' # set the path to the folder wher the Dokerfile is located
-          options: '--file ./deploy/Dockerfile' # Docker Build Options
-          formation: 'web' # Docker Dyno Formation. By default is web
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
+          docker_build_args: --recursive --context-path .
