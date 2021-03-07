@@ -29,6 +29,6 @@ jobs:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
-          dockerfile_path: "./deploy/Dockerfile" # OPTIONAL: set the path to the folder wher the Dokerfile is located, the default is the rootDir
+          dockerfile_path: "./deploy" # OPTIONAL: set the path to the folder wher the Dokerfile is located, the default is the rootDir
           options: "" # OPTIONAL: Docker Build Options
           formation: "web" # OPTIONAL: Docker Dyno Formation. By default is web
