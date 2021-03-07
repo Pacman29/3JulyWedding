@@ -22,17 +22,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: ls
-        run: ls
-      - name: ls 2
-        run: ls 3JulyWedding
-      - name: Build, Push and Deploy to Heroku
+      - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
         id: heroku
-        uses: gonuit/heroku-docker-deploy@v1.3.3
+        uses: jctaveras/heroku-deploy@v2.1.17  # use the latest version of the action
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
-          dockerfile_directory: "./deploy" # OPTIONAL: set the path to the folder wher the Dokerfile is located, the default is the rootDir
-          docker_options: "--no-cache"
-          process_type: web
+          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
+          app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
+          dockerfile_path: 'deploy' # set the path to the folder wher the Dokerfile is located
+          options: '' # Docker Build Options
+          formation: '' # Docker Dyno Formation. By default is web
