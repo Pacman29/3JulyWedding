@@ -24,6 +24,8 @@ jobs:
         uses: actions/checkout@v2
       - name: ls
         run: ls
+      - name: ls 2
+        run: ls 3JulyWedding
       - name: Build, Push and Deploy to Heroku
         id: heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
