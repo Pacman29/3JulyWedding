@@ -24,11 +24,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Build, Push and Deploy to Heroku
         id: heroku
-        uses: jctaveras/heroku-deploy@v2.1.1
+        uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
-          dockerfile_path: "./deploy" # OPTIONAL: set the path to the folder wher the Dokerfile is located, the default is the rootDir
-          options: "" # OPTIONAL: Docker Build Options
-          formation: "web" # OPTIONAL: Docker Dyno Formation. By default is web
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
+          dockerfile_directory: "./deploy" # OPTIONAL: set the path to the folder wher the Dokerfile is located, the default is the rootDir
+          docker_options: "--no-cache"
+          process_type: web
